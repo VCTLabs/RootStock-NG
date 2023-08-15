@@ -153,6 +153,8 @@ check_defines () {
 				repo_rcnee_pkg_list="${repo_rcnee_pkg_list} ${include}"
 			fi
 		fi
+  else
+    repo_rcnee_pkg_list=""
 	fi
 
 	if [ ! "x${deb_console_application_pkgs}" = "x" ] ; then
