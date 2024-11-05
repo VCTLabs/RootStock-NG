@@ -70,6 +70,9 @@ check_defines () {
 		exit 1
 	else
 		suite="${deb_codename}"
+		if [ "x${deb_codename}" = "xbionic" ] ; then
+			options="${options} --no-check-gpg"
+		fi
 	fi
 
 	case "${deb_distribution}" in

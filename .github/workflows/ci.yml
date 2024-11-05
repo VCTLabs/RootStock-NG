@@ -12,13 +12,13 @@ jobs:
       run:
         shell: bash
     strategy:
-      fail-fast: false
+      fail-fast: true
       matrix:
         include:
-          #- dist: ubuntu
-            #suite: bionic
-            #major: 18
-            #arch: arm64
+          - dist: ubuntu
+            suite: bionic
+            major: 18
+            arch: arm64
           - dist: ubuntu
             suite: focal
             major: 20
@@ -48,6 +48,7 @@ jobs:
         run: |
           sudo apt-get -qq update
           sudo apt-get install -y debootstrap qemu-user-static binfmt-support
+          sudo apt-get install -yqq ubuntu-keyring ubuntu-cloud-keyring debian-keyring debian-archive-keyring
 
       - name: Build image
         run: |
@@ -55,7 +56,7 @@ jobs:
           ls -lh deploy/
 
       - name: Upload image
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.dist }}-${{ matrix.suite }}-${{ matrix.arch }}
           path: deploy/${{ matrix.dist }}-${{ matrix.major }}*${{ matrix.arch }}*.tar.xz

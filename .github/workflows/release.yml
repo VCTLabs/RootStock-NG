@@ -43,6 +43,7 @@ jobs:
         with:
           repository: CirrusLogic/linux-firmware
           path: git/linux-firmware
+          ref: cs35l56-20241031
 
       - name: Common dependencies
         run: |
@@ -55,7 +56,7 @@ jobs:
           ls -lh deploy/
 
       - name: Upload image
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: rootfs
           path: deploy/${{ matrix.dist }}-${{ matrix.major }}*${{ matrix.arch }}*.tar.xz
@@ -72,21 +73,21 @@ jobs:
           echo "VERSION=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
           echo ${{ env.VERSION }}
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       # download all artifacts to project dir
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
 
       - name: Generate changes file
-        uses: sarnold/gitchangelog-action@master
+        uses: sarnold/gitchangelog-action@v1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN}}
 
       - name: Create release
         id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
