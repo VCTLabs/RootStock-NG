@@ -1,9 +1,14 @@
 name: CI
 
 on:
-  push:
-    branches: [ master ]
+  workflow_dispatch:
   pull_request:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**.rst'
+      - '**.yml'
 
 jobs:
   build_images:

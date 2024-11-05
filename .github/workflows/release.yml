@@ -58,7 +58,7 @@ jobs:
       - name: Upload image
         uses: actions/upload-artifact@v4
         with:
-          name: rootfs
+          name: ${{ matrix.dist }}-${{ matrix.suite }}-${{ matrix.arch }}
           path: deploy/${{ matrix.dist }}-${{ matrix.major }}*${{ matrix.arch }}*.tar.xz
 
   create_release:
