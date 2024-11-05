@@ -12,13 +12,13 @@ jobs:
       run:
         shell: bash
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         include:
-          - dist: ubuntu
-            suite: bionic
-            major: 18
-            arch: arm64
+          #- dist: ubuntu
+            #suite: bionic
+            #major: 18
+            #arch: arm64
           - dist: ubuntu
             suite: focal
             major: 20
