@@ -79,6 +79,13 @@ jobs:
 
       # download all artifacts to project dir
       - uses: actions/download-artifact@v4
+        with:
+          path: rootfs
+          merge-multiple: true
+
+      - name: check artifacts
+        run: |
+          ls -l rootfs/
 
       - name: Generate changes file
         uses: sarnold/gitchangelog-action@v1
