@@ -28,6 +28,10 @@ jobs:
             suite: jammy
             major: 22
             arch: arm64
+          - dist: ubuntu
+            suite: noble
+            major: 24
+            arch: arm64
 
     steps:
       - uses: actions/checkout@v4

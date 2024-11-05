@@ -29,7 +29,9 @@ if [[ "${DIST}" = "ubuntu" ]]; then
     elif [[ "${SUITE}" = "focal" ]]; then
         target="${DIST}-20.04.6"
     elif [[ "${SUITE}" = "jammy" ]]; then
-        target="${DIST}-22.04.3"
+        target="${DIST}-22.04.5"
+    elif [[ "${SUITE}" = "noble" ]]; then
+        target="${DIST}-24.04.1"
     fi
 fi
 
